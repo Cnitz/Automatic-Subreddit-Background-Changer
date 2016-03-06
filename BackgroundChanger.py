@@ -10,6 +10,9 @@ import datetime
 import config
 
 
+true = 1
+false = 0
+
 
 timestamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
 
@@ -20,7 +23,13 @@ conn.request('GET', '/r/'+name+"/.json?after=t3_10omtd/", headers=hdr)
 data = json.loads(conn.getresponse().read())
 conn.close()
 
-url = data['data']['children'][0]['data']['url']
+i = 0
+
+
+while data['data']['children'][i]['data']['is_self'] == true :
+    i = i + 1
+
+url = data['data']['children'][i]['data']['url']
 
 if url.find("imgur") > -1:
     if url.find(".png") == -1:

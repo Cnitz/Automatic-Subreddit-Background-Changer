@@ -1,3 +1,3 @@
 subreddit = dict(
-    name = 'earthporn'
+    name = 'pics'
 )
