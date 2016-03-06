@@ -1,0 +1,12 @@
+Mac OS Subreddit Background Changer
+
+Install Instructions:
+1. Download
+2. Use command “crontab -e”
+3. Add command @hourly /usr/bin/python path-to-BackgroundChanger.py
+4. Enjoy
+
+
+To Change Subreddit:
+1. Open config.py
+2. Change name to desired subreddit

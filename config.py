@@ -1,0 +1,3 @@
+subreddit = dict(
+    name = 'earthporn'
+)
