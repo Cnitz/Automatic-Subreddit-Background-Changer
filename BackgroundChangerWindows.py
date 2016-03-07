@@ -23,7 +23,7 @@ conn.request('GET', '/r/'+name+"/.json?after=t3_10omtd/", headers=hdr)
 data = json.loads(conn.getresponse().read().decode())
 conn.close()
 
-i = 1
+i = 0
 
 
 while data['data']['children'][i]['data']['is_self'] == true :
