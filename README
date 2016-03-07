@@ -10,3 +10,14 @@ Install Instructions:
 To Change Subreddit:
 1. Open config.py
 2. Change name to desired subreddit
+
+
+Windows Installation
+1. Go to Control Panel -> Schedule Tasks -> Create new Tasks
+2. Go to Triggers click new
+3. Set "repeat task ever..." to hour
+4. Go to Actions click new
+5. Set Program/Script to path of "python.exe"
+6. Set Arg to location of BackgroundChangerWindows.py
+7. Go to general and give name to task
+7. Enjoy
