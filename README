@@ -1,4 +1,9 @@
-﻿Mac OS Subreddit Background Changer
+﻿Mac OS/Windows Subreddit Background Changer
+
+Requirements:
+Python 3.4 (for windows)
+Pillow for Python (for windows) https://pypi.python.org/pypi/Pillow
+
 
 Install Instructions:
 1. Download
