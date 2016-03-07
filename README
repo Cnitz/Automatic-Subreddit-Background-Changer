@@ -1,4 +1,4 @@
-Mac OS Subreddit Background Changer
+﻿Mac OS Subreddit Background Changer
 
 Install Instructions:
 1. Download
@@ -15,9 +15,15 @@ To Change Subreddit:
 Windows Installation
 1. Go to Control Panel -> Schedule Tasks -> Create new Tasks
 2. Go to Triggers click new
-3. Set "repeat task ever..." to hour
+3. Set "repeat task every..." to hour
 4. Go to Actions click new
+
+5. Create a Batch file "file.bat" and write the command "path to python.exe" "path to BackgroundChangersWindows.py" (refer to examplestart.bat)
+6. Set Program/Script to path of "file.bat"
+OR
 5. Set Program/Script to path of "python.exe"
 6. Set Arg to location of BackgroundChangerWindows.py
-7. Go to general and give name to task
-7. Enjoy
+
+7. Go to general check box "Run with highest Privelege"
+8. Give name to task
+9. Enjoy
