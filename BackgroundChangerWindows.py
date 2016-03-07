@@ -23,7 +23,7 @@ conn.request('GET', '/r/'+name+"/.json?after=t3_10omtd/", headers=hdr)
 data = json.loads(conn.getresponse().read().decode())
 conn.close()
 
-i = 0
+i = 1
 
 
 while data['data']['children'][i]['data']['is_self'] == true :
@@ -46,18 +46,18 @@ page = urllib.request.urlopen(r).read()
 
 dir = os.listdir(".")
 for file in dir:
-    if(file.find("pic.jpg") > -1):
+    if(file.find("pic.png") > -1):
         os.remove(file)
 
 
 
-output = open(timestamp + "pic.jpg",'wb')
+output = open(timestamp + "pic.png",'wb')
 output.write(page)
 
 dir = os.listdir(".")
 pic = ""
 for file in dir:
-    if(file.find("pic.jpg") > -1):
+    if(file.find("pic.png") > -1):
         pic = file
        
 realpath = os.path.abspath(pic)
