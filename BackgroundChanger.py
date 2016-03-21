@@ -8,45 +8,70 @@ import subprocess
 import os
 import datetime
 import config
+from PIL import Image
 
 
 true = 1
 false = 0
+minWidth = config.minResolution['width']
+minHeight = config.minResolution['height']
 
 
 timestamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
 
-hdr= { 'User-Agent' : 'subreddit picture retrieval bot by me' }
-conn = httplib.HTTPConnection('www.reddit.com')
-name = config.subreddit['name']
-conn.request('GET', '/r/'+name+"/.json?after=t3_10omtd/", headers=hdr)
-data = json.loads(conn.getresponse().read())
-conn.close()
+def setTime():
+    timestamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+def removePics():
+    os.system("rm *pic.png")
 
-i = 0
+def checkResolution(filepath):
+    im = Image.open(filepath)
+    width, height = im.size
+    if width < minWidth :
+        return false
+    if height < minHeight :
+        return false
+    return true
+
+def getPic():
+    setTime()
+    removePics()
+    hdr= { 'User-Agent' : 'subreddit picture retrieval bot by me' }
+    conn = httplib.HTTPConnection('www.reddit.com')
+    name = config.subreddit['name']
+    conn.request('GET', '/r/'+name+"/.json?after=t3_10omtd/", headers=hdr)
+    data = json.loads(conn.getresponse().read())
+    conn.close()
+
+    i = 0
+
+    while true:
+        while data['data']['children'][i]['data']['is_self'] == true :
+            i = i + 1
+
+        url = data['data']['children'][i]['data']['url']
+
+        if url.find("imgur") > -1:
+            if url.find(".png") == -1:
+                if url.find(".jpg") == -1:
+                    url = url + ".png"
+
+        user_agent = 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)'
+        headers = { 'User-Agent' : user_agent }
+        r = urllib2.Request(url, headers=headers)
+        page = urllib2.urlopen(r).read()
+
+        output = open(timestamp + "pic.png",'wb')
+        output.write(page)
+        if checkResolution(timestamp + "pic.png") == true :
+            return
+        i = i + 1
+
+getPic()
 
 
-while data['data']['children'][i]['data']['is_self'] == true :
-    i = i + 1
-
-url = data['data']['children'][i]['data']['url']
-
-if url.find("imgur") > -1:
-    if url.find(".png") == -1:
-        if url.find(".jpg") == -1:
-            url = url + ".png"
 
 
-
-user_agent = 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)'
-headers = { 'User-Agent' : user_agent }
-r = urllib2.Request(url, headers=headers)
-page = urllib2.urlopen(r).read()
-
-os.system("rm *pic.png")
-
-output = open(timestamp + "pic.png",'wb')
-output.write(page)
 
 dir = os.listdir(".")
 pic = ""
