@@ -1,4 +1,4 @@
-﻿Mac OS/Windows Subreddit Background Changer
+Mac OS/Windows Subreddit Background Changer
 
 Requirements:
 Python 3.4 (for windows)
@@ -8,13 +8,17 @@ Pillow for Python (for windows) https://pypi.python.org/pypi/Pillow
 Install Instructions:
 1. Download
 2. Use command “crontab -e”
-3. Add command @hourly /usr/bin/python path-to-BackgroundChanger.py
+3. Add command “@hourly /usr/bin/python path-to-BackgroundChanger.py”
 4. Enjoy
 
 
 To Change Subreddit:
 1. Open config.py
 2. Change name to desired subreddit
+
+To Change Resolution Requiremnets:
+1. Open config.py
+2. Change Height and Width to desired amount
 
 
 Windows Installation
