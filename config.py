@@ -1,5 +1,5 @@
 subreddit = dict(
-    name = 'earthporn'
+    name = 'earthporn/new'
 )
 minResolution = dict(
     width = 1920,

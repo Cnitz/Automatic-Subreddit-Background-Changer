@@ -40,12 +40,19 @@ def getPic():
 
         url = data['data']['children'][i]['data']['url']
 
+
         if url.find("imgur") > -1:
             if url.find(".png") == -1:
                 if url.find(".jpg") == -1:
                     url = url + ".png"
-        
 
+        #Temporary Fix for flickr and reddituploads
+        if url.find("flickr") > -1:
+            i = i + 1
+            continue
+        if url.find("reddituploads") > -1:
+            i = i + 1
+            continue
 
         user_agent = 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)'
         headers = { 'User-Agent' : user_agent }
